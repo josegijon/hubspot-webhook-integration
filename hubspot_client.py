@@ -2,11 +2,14 @@ import logging
 import os
 
 import requests
+from dotenv import load_dotenv
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 log = logging.getLogger("hubspot")
 BASE = "https://api.hubapi.com"
+
+load_dotenv()
 
 session = requests.Session()
 session.headers["Authorization"] = f"Bearer {os.environ['HUBSPOT_KEY']}"

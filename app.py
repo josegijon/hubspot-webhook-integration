@@ -3,6 +3,7 @@ import logging
 import os
 
 import requests
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 
 import hubspot_client as hs
@@ -11,6 +12,8 @@ logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s %(levelname)s %(name)s %(message)s")
 log = logging.getLogger("app")
 app = Flask(__name__)
+
+load_dotenv()
 
 def _leer_secreto() -> str:
     valor = os.environ.get("WEBHOOK_SECRET")
